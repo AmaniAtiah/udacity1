@@ -35,7 +35,6 @@ build:
 
 
 workflows:
-  udagram:
     jobs:
       - build
       - hold:
