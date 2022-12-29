@@ -9,6 +9,8 @@ build:
    - image: "cimg/node:14.15"
  steps:
    - node/install
+      node-version: '14.15'         
+
    - checkout
    - aws-cli/setup
    - run:
@@ -33,18 +35,3 @@ build:
          npm run frontend:deploy 
 
 
-
-workflows:
-    jobs:
-      - build
-      - hold:
-          filters:
-            branches:
-              only:
-                - master
-          type: approval
-          requires:
-            - build
-      - deploy:
-          requires:
-            - hold
